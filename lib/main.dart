@@ -1,47 +1,81 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-      MaterialApp(
-          theme: ThemeData(primarySwatch: Colors.indigo),
-          home: Scaffold(
-              appBar: AppBar(
-                  title: const Text("Bite Sized - Top stories")
-              ),
-              body: bodyContent()
-          )
-      )
-  );
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  static const String _title = 'Top Stories';
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: Scaffold(
+        // appBar: AppBar(title: const Text(_title)),
+        body: const MyStatelessWidget(),
+      ),
+    );
+  }
 }
 
-bodyContent(){
-  return Card(
-      elevation: 6,
-      margin: const EdgeInsets.all(12),
-      child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Container(
-              width: double.infinity,
-              height: 200,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage("https://i.redd.it/nf7xyaawmnk91.jpg"),
-                      fit: BoxFit.cover
-                  )
-              ),
-              child: Container(
-                  alignment: Alignment.bottomRight,
-                  padding: const EdgeInsets.all(12),
-                  child: const Text(
-                      "Reef Devils Tribes",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white70
-                      )
-                  )
-              )
-          ),
-      )
-  );
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Card(
+        child: ListView(
+
+          children: <Widget>[
+            Image.asset('assets/images/city2.jpg'),
+            const ListTile(
+              leading: Icon(Icons.add_a_photo_rounded),
+              title: Text('The Enchanted Nightingale'),
+              subtitle: Text('Rafael Campos - 11/09/2022'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text('Leia mais'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('🆙'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+            Image.asset('assets/images/ladyInWhite.jpg'),
+            const ListTile(
+              leading: Icon(Icons.add_a_photo_rounded),
+              title: Text('The Enchanted Nightingale'),
+              subtitle: Text('Rafael Campos - 11/09/2022'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text('Leia mais'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('🆙'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+          ],
+
+
+        ),
+      ),
+    );
+  }
 }
